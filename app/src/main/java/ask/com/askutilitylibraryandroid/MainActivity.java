@@ -1,11 +1,8 @@
 package ask.com.askutilitylibraryandroid;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import ask.com.mylibrary.AlertDialogUtils;
-import ask.com.mylibrary.NetworkUtils;
 
 public class MainActivity extends AppCompatActivity {
 
