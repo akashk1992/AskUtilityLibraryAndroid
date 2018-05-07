@@ -1,3 +1,21 @@
+# Install
+<b>gradle dependency</b></br>
+<pre>
+dependencies {
+...
+compile('ask.com.askutilitylibraryandroid:ask-utility-library:1.3')
+...
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        ...
+    }
+}
+</pre>
+</br>
+
 # AskUtilityLibraryAndroid
 some common functions are written in this library that are used frequently
 
