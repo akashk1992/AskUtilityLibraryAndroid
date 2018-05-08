@@ -1,11 +1,14 @@
 package ask.com.askutilitylibraryandroid;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
@@ -48,5 +51,20 @@ public class AskUtility {
             return;
         if (activity.getCurrentFocus() != null && activity.getCurrentFocus().getWindowToken() != null)
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public void openPhoneDialerWithNumber(String number) throws ActivityNotFoundException {
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        if (TextUtils.isEmpty(number))
+            return;
+        callIntent.setData(Uri.parse("tel:" + number));
+        mContext.startActivity(callIntent);
+    }
+
+    public void sendEmailWithGmail(String email) throws ActivityNotFoundException {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+        emailIntent.setType("message/rfc822");
+        mContext.startActivity(emailIntent);
     }
 }
