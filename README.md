@@ -55,3 +55,63 @@ AlertDialogUtils.SimpleAlertDialog(this, "Title", "message", R.style.myStyle);</
 <b>Other Utility Methods:</b>
 <a href="https://github.com/akashk1992/AskUtilityLibraryAndroid/blob/master/app/src/main/java/ask/com/askutilitylibraryandroid/AskUtility.java">Check Here</a>
 </pre>
+
+# Endless RecyclerScrollview
+<pre>
+scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                if (hasMoreData) {
+                    if (!isLoadingMoreData) {
+                        showProgress = false;
+                        isLoadingMoreData = true;
+                        Tasks.call(new Callable<Void>() {
+                            @Override
+                            public Void call() throws Exception {
+                                recyclerAdapter.addLastItem();
+                                return null;
+                            }
+                        });
+                        pageNumber++;
+                        getClients();
+                    }
+                }
+            }
+        };
+mRecyclerView.addOnScrollListener(scrollListener);
+
+public void addLastItem() {
+//When load more data in progress
+    clientsList.add(null);
+    notifyItemInserted(getItemCount() - 1);
+ }
+
+public void removeLastItem() {
+//When load more data complete
+    clientsList.remove(getItemCount() - 1);
+    notifyItemRemoved(getItemCount() - 1);
+ }
+ 
+ //When you want to reset pagination like on refresh page
+scrollListener.resetState();
+
+
+<b>In RecyclerAdapter</b>
+ @Override
+ public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+     if (viewType == VIEW_TYPE_ITEM) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.clients_list_item, parent, false);
+        return new MyViewHolder(itemView);
+      } else {
+      View loadingView = LayoutInflater.from(parent.getContext()).inflate(R.layout.loading_item, parent, false);
+      return new LoadingViewHolder(loadingView);
+    }
+ }
+    
+ @Override
+ public int getItemViewType(int position) {
+     return (clientsList.get(position) == null) ? VIEW_TYPE_LOADING : VIEW_TYPE_ITEM;
+ }
+ 
+[Note:* loading_item.xml file is included in app module]
+</pre>
