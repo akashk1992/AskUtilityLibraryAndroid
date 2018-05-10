@@ -1,7 +1,6 @@
-package ask.com.askutilitylibraryandroid;
+package ask.com.asklibrary;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AskUtilityLibraryAndroid.iml" filepath="$PROJECT_DIR$/AskUtilityLibraryAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/asklibrary/asklibrary.iml" filepath="$PROJECT_DIR$/asklibrary/asklibrary.iml" />
     </modules>
   </component>
 </project>

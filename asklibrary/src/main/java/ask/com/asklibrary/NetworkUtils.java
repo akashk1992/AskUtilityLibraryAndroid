@@ -1,4 +1,4 @@
-package ask.com.askutilitylibraryandroid;
+package ask.com.asklibrary;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
