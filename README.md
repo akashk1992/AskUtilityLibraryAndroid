@@ -38,7 +38,7 @@ exclude group:"com.google.code.gson", module:"gson"
 }
 </pre>
 
-# Usage 
+# Usage Network Check and Alert Dialogs 
 <b>NetworkUtils</b></br>
 boolean isAvailable = NetworkUtils.isNetworkAvailable(this)
 
@@ -50,6 +50,44 @@ AlertDialogUtils.SimpleAlertDialogFinishActivity(this, "Title", "message");</br>
 <b>AlertDialog With Custom Style</b></br>
 <i>[Note*: Only changes text and background color]</i></br>
 AlertDialogUtils.SimpleAlertDialog(this, "Title", "message", R.style.myStyle);</br>
+
+# Usage Document Picker(*only files)
+<pre>
+documentPicker = new DocumentPicker(this);
+documentPicker.startPicker(DOCUMENT_PICK_REQUEST);
+</br>
+@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == DOCUMENT_PICK_REQUEST) {
+            try {
+                String filePath = documentPicker.filePath(data);
+                //FileUtils.openDoc(ExampleActivity.this, filePath); //To Open File
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+</pre>
+
+# Usage Runtime Permission check
+<pre>
+ PermissionCheck permissionCheck = new PermissionCheck(this);
+ permissionCheck.askPermissionIfMissing(STORAGE_PERMISSIONS_REQUEST,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_CONTACTS, Manifest.permission.ACCESS_FINE_LOCATION);
+                
+**Handle Permissions**
+ switch (requestCode) {
+            case STORAGE_PERMISSIONS_REQUEST:
+                if ((grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                }
+            break;
+ }
+</pre>
 
 <pre>
 <b>Other Utility Methods:</b>
