@@ -91,7 +91,7 @@ documentPicker.startPicker(DOCUMENT_PICK_REQUEST);
 
 <pre>
 <b>Other Utility Methods:</b>
-<a href="https://github.com/akashk1992/AskUtilityLibraryAndroid/blob/master/app/src/main/java/ask/com/askutilitylibraryandroid/AskUtility.java">Check Here</a>
+<a href="https://github.com/akashk1992/AskUtilityLibraryAndroid/blob/master/asklibrary/src/main/java/ask/com/asklibrary/AskUtility.java">Check Here</a>
 </pre>
 
 # Endless RecyclerScrollview
