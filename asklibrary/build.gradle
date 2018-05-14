@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
 
+ext {
+    PUBLISH_GROUP_ID = 'ask.com.askutilitylibraryandroid'
+    PUBLISH_ARTIFACT_ID = 'ask-utility-library'
+    PUBLISH_VERSION = '1.6'
+}
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -7,6 +13,9 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+    }
+    lintOptions {
+        abortOnError false
     }
     buildTypes {
         release {
@@ -21,6 +30,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
-
 }
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
 
