@@ -26,8 +26,9 @@ android {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.android.support:design:27.1.1'
     implementation project(':asklibrary')
+
 }
 
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
